@@ -10,3 +10,13 @@ When the application receives a POST request, it returns two booleans along with
 
 Production URL is here: (https://arcane-eyrie-99827.herokuapp.com/)
 
+### Running the Application Locally
+- Clone the repo
+- ```bundle install```
+- ```rake db:create && db:migrate && db:seed```
+
+*Versions*
+- Rails 5.0.3
+- Ruby 2.3.0p0
+
+
