@@ -25,4 +25,40 @@ RSpec.describe Link, type: :model do
       expect(returned[2]["url"]).to eq(expected_last)
     end
   end
+
+  context "number_one?" do
+    it "it says if the url is the top ranked" do
+      link_1 = Link.create(url: "http://www.google.com", read: true)
+      link_2 = Link.create(url: "http://www.google.com", read: true)
+      link_3 = Link.create(url: "http://www.google.com", read: true)
+
+      link_4 = Link.create(url: "http://www.yahoo.com", read: true)
+      link_5 = Link.create(url: "http://www.yahoo.com", read: true)
+
+      link_6 = Link.create(url: "http://www.nytimes.com", read: true)
+
+      top_ranked = link_1.number_one?
+      expected = true
+
+      expect(top_ranked).to eq(expected)
+    end
+  end
+
+  context "top_ten?" do
+    it "it says if the url is in the top ten" do
+      link_1 = Link.create(url: "http://www.google.com", read: true)
+      link_2 = Link.create(url: "http://www.google.com", read: true)
+      link_3 = Link.create(url: "http://www.google.com", read: true)
+
+      link_4 = Link.create(url: "http://www.yahoo.com", read: true)
+      link_5 = Link.create(url: "http://www.yahoo.com", read: true)
+
+      link_6 = Link.create(url: "http://www.nytimes.com", read: true)
+
+      top_ten = link_1.top_ten?
+      expected = true
+
+      expect(top_ten).to eq(expected)
+    end
+  end
 end

@@ -11,4 +11,19 @@ class Link < ApplicationRecord
       order by rank desc
       limit 10;"])
   end
+
+  def number_one?
+    if self.url == Link.top_most_read[0].url
+      true
+    else
+      false
+    end
+  end
+
+  def top_ten?
+    top_most_read = Link.top_most_read
+    top_most_read.any? do |link|
+      link.url == self.url
+    end
+  end
 end
